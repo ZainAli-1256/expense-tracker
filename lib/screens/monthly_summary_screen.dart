@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:expense_tracker/providers/transaction_provider.dart';
+
+import 'package:expense_tracker/provider/transaction_provider.dart';
 import 'package:expense_tracker/widgets/pie_chart_widget.dart';
 import 'package:expense_tracker/widgets/transaction_card.dart';
 import 'package:expense_tracker/screens/add_transaction_screen.dart';
 
 class MonthlySummaryScreen extends StatelessWidget {
-  const MonthlySummaryScreen({Key? key}) : super(key: key);
+  const MonthlySummaryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +23,8 @@ class MonthlySummaryScreen extends StatelessWidget {
 
             return Column(
               children: [
-                // Summary Cards
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     children: [
                       _buildSummaryRow(
@@ -47,11 +47,9 @@ class MonthlySummaryScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-
-                // Pie Chart
                 if (categorySpending.isNotEmpty)
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -67,13 +65,11 @@ class MonthlySummaryScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                // All Transactions
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
+                const Padding(
+                  padding: EdgeInsets.all(16),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: const Text(
+                    child: Text(
                       'All Transactions',
                       style: TextStyle(
                         fontSize: 16,
@@ -82,27 +78,14 @@ class MonthlySummaryScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 if (provider.transactions.isEmpty)
-                  Padding(
-                    padding: const EdgeInsets.all(32.0),
-                    child: Column(
-                      children: [
-                        Icon(Icons.inbox, size: 64, color: Colors.grey[300]),
-                        const SizedBox(height: 16),
-                        Text(
-                          'No transactions',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[600],
-                          ),
-                        ),
-                      ],
-                    ),
+                  const Padding(
+                    padding: EdgeInsets.all(32),
+                    child: Text('No transactions'),
                   )
                 else
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       children: List.generate(
                         provider.transactions.length,
@@ -110,12 +93,6 @@ class MonthlySummaryScreen extends StatelessWidget {
                           transaction: provider.transactions[index],
                           onDelete: () {
                             provider.deleteTransaction(index);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Transaction deleted'),
-                                duration: Duration(seconds: 2),
-                              ),
-                            );
                           },
                           onEdit: () {
                             Navigator.push(
@@ -132,8 +109,6 @@ class MonthlySummaryScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                const SizedBox(height: 24),
               ],
             );
           },
@@ -153,14 +128,10 @@ class MonthlySummaryScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            title,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-          ),
+          Text(title),
           Text(
             '₹${amount.toStringAsFixed(2)}',
             style: TextStyle(
-              fontSize: 16,
               fontWeight: FontWeight.bold,
               color: color,
             ),

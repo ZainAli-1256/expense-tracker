@@ -9,15 +9,6 @@ class TransactionProvider extends ChangeNotifier {
   List<Transaction> get transactions => _transactions;
   DateTime get selectedMonth => _selectedMonth;
 
-  double get monthlyIncome =>
-      HiveService.getTotalIncome(_selectedMonth.year, _selectedMonth.month);
-
-  double get monthlyExpense =>
-      HiveService.getTotalExpense(_selectedMonth.year, _selectedMonth.month);
-
-  double get balance =>
-      HiveService.getBalance(_selectedMonth.year, _selectedMonth.month);
-
   TransactionProvider() {
     loadTransactions();
   }
@@ -30,42 +21,42 @@ class TransactionProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  // ✅ ADD
   Future<void> addTransaction(Transaction transaction) async {
     await HiveService.addTransaction(transaction);
     loadTransactions();
   }
 
+  // ✅ DELETE (by index)
   Future<void> deleteTransaction(int index) async {
     await HiveService.deleteTransaction(index);
     loadTransactions();
   }
 
+  // ✅ UPDATE (by index)
   Future<void> updateTransaction(int index, Transaction transaction) async {
     await HiveService.updateTransaction(index, transaction);
     loadTransactions();
   }
 
-  void setSelectedMonth(DateTime month) {
-    _selectedMonth = month;
-    loadTransactions();
-    notifyListeners();
-  }
-
   void previousMonth() {
     _selectedMonth = DateTime(_selectedMonth.year, _selectedMonth.month - 1);
     loadTransactions();
-    notifyListeners();
   }
 
   void nextMonth() {
     _selectedMonth = DateTime(_selectedMonth.year, _selectedMonth.month + 1);
     loadTransactions();
-    notifyListeners();
   }
 
-  List<Transaction> getTransactionsByCategory(String category) {
-    return _transactions.where((t) => t.category == category).toList();
-  }
+  double get monthlyIncome =>
+      HiveService.getTotalIncome(_selectedMonth.year, _selectedMonth.month);
+
+  double get monthlyExpense =>
+      HiveService.getTotalExpense(_selectedMonth.year, _selectedMonth.month);
+
+  double get balance =>
+      HiveService.getBalance(_selectedMonth.year, _selectedMonth.month);
 
   Map<String, double> getCategorySpending() {
     return HiveService.getCategorySpending(

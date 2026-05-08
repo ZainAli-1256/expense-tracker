@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:expense_tracker/services/hive_service.dart';
-import 'package:expense_tracker/providers/transaction_provider.dart';
-import 'package:expense_tracker/providers/category_provider.dart';
+import 'package:expense_tracker/provider/transaction_provider.dart';
+import 'package:expense_tracker/provider/category_provider.dart';
 import 'package:expense_tracker/screens/home_screen.dart';
 
 void main() async {

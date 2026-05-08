@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:expense_tracker/models/transaction.dart';
-import 'package:expense_tracker/providers/transaction_provider.dart';
-import 'package:expense_tracker/providers/category_provider.dart';
+import 'package:expense_tracker/provider/transaction_provider.dart';
+import 'package:expense_tracker/provider/category_provider.dart';
 
 class AddTransactionScreen extends StatefulWidget {
   final Transaction? transaction;
@@ -300,21 +300,23 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
 
   Future<void> _saveTransaction() async {
     if (_amountController.text.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Please enter amount')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter amount')),
+      );
       return;
     }
 
     if (_selectedCategory.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Please select category')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please select category')),
+      );
       return;
     }
 
     final amount = double.parse(_amountController.text);
+
     final transaction = Transaction(
+      id: widget.transaction?.id, // ✅ IMPORTANT (preserve ID)
       type: _selectedType,
       amount: amount,
       category: _selectedCategory,
@@ -327,7 +329,11 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     if (widget.transaction == null) {
       await provider.addTransaction(transaction);
     } else {
-      await provider.updateTransaction(widget.transactionIndex!, transaction);
+      // ✅ FIX: use index, no key
+      await provider.updateTransaction(
+        widget.transactionIndex!,
+        transaction,
+      );
     }
 
     if (mounted) {
@@ -339,7 +345,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                 ? 'Transaction added'
                 : 'Transaction updated',
           ),
-          duration: const Duration(seconds: 2),
         ),
       );
     }

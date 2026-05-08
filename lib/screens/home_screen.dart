@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:expense_tracker/providers/transaction_provider.dart';
+import 'package:expense_tracker/provider/transaction_provider.dart';
 import 'package:expense_tracker/screens/add_transaction_screen.dart';
 import 'package:expense_tracker/screens/monthly_summary_screen.dart';
 import 'package:expense_tracker/widgets/transaction_card.dart';
@@ -72,9 +72,8 @@ class HomeScreen extends StatelessWidget {
                       SummaryCard(
                         title: 'Balance',
                         amount: provider.balance,
-                        color: provider.balance >= 0
-                            ? Colors.blue
-                            : Colors.orange,
+                        color:
+                            provider.balance >= 0 ? Colors.blue : Colors.orange,
                       ),
                     ],
                   ),

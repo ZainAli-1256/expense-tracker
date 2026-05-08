@@ -8,7 +8,7 @@ class TransactionTile extends StatefulWidget {
   final VoidCallback? onDelete;
 
   const TransactionTile({Key? key, required this.transaction, this.onDelete})
-    : super(key: key);
+      : super(key: key);
 
   @override
   State<TransactionTile> createState() => _TransactionTileState();
@@ -44,13 +44,12 @@ class _TransactionTileState extends State<TransactionTile>
   @override
   Widget build(BuildContext context) {
     return SlideTransition(
-      position:
-          Tween<Offset>(
-            begin: const Offset(100 / 400, 0),
-            end: Offset.zero,
-          ).animate(
-            CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic),
-          ),
+      position: Tween<Offset>(
+        begin: const Offset(100 / 400, 0),
+        end: Offset.zero,
+      ).animate(
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic),
+      ),
       child: FadeTransition(
         opacity: _fadeAnimation,
         child: Padding(
@@ -62,11 +61,10 @@ class _TransactionTileState extends State<TransactionTile>
   }
 
   Widget _buildTile(BuildContext context) {
-    final isIncome = widget.transaction.type == TransactionType.income;
+    final isIncome = widget.transaction.type == 'income';
     final categoryIcon = _getCategoryIcon(widget.transaction.category);
-    final categoryColor = isIncome
-        ? const Color(0xFF10B981)
-        : const Color(0xFFEF4444);
+    final categoryColor =
+        isIncome ? const Color(0xFF10B981) : const Color(0xFFEF4444);
 
     return GestureDetector(
       onLongPress: widget.onDelete,
@@ -109,8 +107,8 @@ class _TransactionTileState extends State<TransactionTile>
                   Text(
                     widget.transaction.category,
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
+                          fontWeight: FontWeight.w600,
+                        ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -118,8 +116,8 @@ class _TransactionTileState extends State<TransactionTile>
                   Text(
                     _formatDate(widget.transaction.date),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: const Color(0xFF9CA3AF),
-                    ),
+                          color: const Color(0xFF9CA3AF),
+                        ),
                   ),
                   if (widget.transaction.note != null &&
                       widget.transaction.note!.isNotEmpty) ...[
@@ -127,9 +125,9 @@ class _TransactionTileState extends State<TransactionTile>
                     Text(
                       widget.transaction.note!,
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: const Color(0xFF6B7280),
-                        fontStyle: FontStyle.italic,
-                      ),
+                            color: const Color(0xFF6B7280),
+                            fontStyle: FontStyle.italic,
+                          ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -146,16 +144,16 @@ class _TransactionTileState extends State<TransactionTile>
                 Text(
                   '${isIncome ? '+' : '-'}\$${widget.transaction.amount.toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: categoryColor,
-                    fontWeight: FontWeight.w700,
-                  ),
+                        color: categoryColor,
+                        fontWeight: FontWeight.w700,
+                      ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   isIncome ? 'Income' : 'Expense',
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: categoryColor.withValues(alpha: 0.7),
-                  ),
+                        color: categoryColor.withValues(alpha: 0.7),
+                      ),
                 ),
               ],
             ),

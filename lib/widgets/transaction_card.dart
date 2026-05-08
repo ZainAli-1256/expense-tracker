@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:expense_tracker/models/transaction.dart';
 import 'package:provider/provider.dart';
-import 'package:expense_tracker/providers/category_provider.dart';
+
+import 'package:expense_tracker/models/transaction.dart';
+import 'package:expense_tracker/provider/category_provider.dart';
 
 class TransactionCard extends StatelessWidget {
   final Transaction transaction;
@@ -10,11 +11,11 @@ class TransactionCard extends StatelessWidget {
   final VoidCallback onEdit;
 
   const TransactionCard({
-    Key? key,
+    super.key,
     required this.transaction,
     required this.onDelete,
     required this.onEdit,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +43,11 @@ class TransactionCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.grey[50],
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey[200]!),
+            border: Border.all(color: Colors.grey.shade200),
           ),
           child: Row(
             children: [
-              // Category icon
+              // icon
               Container(
                 width: 50,
                 height: 50,
@@ -64,7 +65,7 @@ class TransactionCard extends StatelessWidget {
 
               const SizedBox(width: 12),
 
-              // Category and date
+              // middle
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,13 +79,16 @@ class TransactionCard extends StatelessWidget {
                     ),
                     Text(
                       DateFormat('dd MMM, hh:mm a').format(transaction.date),
-                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[600],
+                      ),
                     ),
                   ],
                 ),
               ),
 
-              // Amount
+              // amount
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -101,7 +105,10 @@ class TransactionCard extends StatelessWidget {
                   if (transaction.note.isNotEmpty)
                     Text(
                       transaction.note,
-                      style: TextStyle(fontSize: 11, color: Colors.grey[600]),
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Colors.grey[600],
+                      ),
                       overflow: TextOverflow.ellipsis,
                     ),
                 ],

@@ -6,22 +6,22 @@ part 'transaction.g.dart';
 @HiveType(typeId: 0)
 class Transaction extends HiveObject {
   @HiveField(0)
-  late String id;
+  String id;
 
   @HiveField(1)
-  late String type; // 'income' or 'expense'
+  String type; // 'income' or 'expense'
 
   @HiveField(2)
-  late double amount;
+  double amount;
 
   @HiveField(3)
-  late String category;
+  String category;
 
   @HiveField(4)
-  late DateTime date;
+  DateTime date;
 
   @HiveField(5)
-  late String note;
+  String note;
 
   Transaction({
     String? id,
@@ -30,15 +30,5 @@ class Transaction extends HiveObject {
     required this.category,
     required this.date,
     required this.note,
-  }) {
-    this.id = id ?? const Uuid().v4();
-  }
-
-  Transaction.empty()
-    : id = const Uuid().v4(),
-      type = 'expense',
-      amount = 0,
-      category = '',
-      date = DateTime.now(),
-      note = '';
+  }) : id = id ?? const Uuid().v4();
 }
