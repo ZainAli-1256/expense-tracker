@@ -81,7 +81,7 @@ class _AnimatedPressButtonState extends State<AnimatedPressButton>
             boxShadow: [
               BoxShadow(
                 color: (widget.backgroundColor ?? const Color(0xFF7C3AED))
-                    .withOpacity(0.3),
+                    .withValues(alpha: 0.3),
                 blurRadius: 12,
                 offset: const Offset(0, 6),
               ),
@@ -200,7 +200,7 @@ class _AnimatedGradientFABState extends State<AnimatedGradientFAB>
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF7C3AED).withOpacity(0.4),
+                color: const Color(0xFF7C3AED).withValues(alpha: 0.4),
                 blurRadius: 16,
                 offset: const Offset(0, 8),
               ),

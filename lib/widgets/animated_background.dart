@@ -46,7 +46,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
               end: Alignment(-1.0 + _controller.value * 2, 1.0),
               colors: [
                 const Color(0xFF1A1A2E),
-                const Color(0xFF16213E).withOpacity(0.8),
+                const Color(0xFF16213E).withValues(alpha: 0.8),
                 const Color(0xFF0F172A),
               ],
               stops: const [0.0, 0.5, 1.0],

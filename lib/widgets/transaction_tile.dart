@@ -17,7 +17,6 @@ class TransactionTile extends StatefulWidget {
 class _TransactionTileState extends State<TransactionTile>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _slideAnimation;
   late Animation<double> _fadeAnimation;
 
   @override
@@ -27,11 +26,6 @@ class _TransactionTileState extends State<TransactionTile>
       duration: const Duration(milliseconds: 400),
       vsync: this,
     );
-
-    _slideAnimation = Tween<double>(
-      begin: 100,
-      end: 0,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
 
     _fadeAnimation = Tween<double>(
       begin: 0,
@@ -50,8 +44,11 @@ class _TransactionTileState extends State<TransactionTile>
   @override
   Widget build(BuildContext context) {
     return SlideTransition(
-      position: Tween<Offset>(begin: Offset(100 / 400, 0), end: Offset.zero)
-          .animate(
+      position:
+          Tween<Offset>(
+            begin: const Offset(100 / 400, 0),
+            end: Offset.zero,
+          ).animate(
             CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic),
           ),
       child: FadeTransition(
@@ -81,7 +78,7 @@ class _TransactionTileState extends State<TransactionTile>
           border: Border.all(color: const Color(0xFF374151), width: 1),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Colors.black.withValues(alpha: 0.2),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -93,10 +90,10 @@ class _TransactionTileState extends State<TransactionTile>
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: categoryColor.withOpacity(0.1),
+                color: categoryColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: categoryColor.withOpacity(0.3),
+                  color: categoryColor.withValues(alpha: 0.3),
                   width: 1,
                 ),
               ),
@@ -157,7 +154,7 @@ class _TransactionTileState extends State<TransactionTile>
                 Text(
                   isIncome ? 'Income' : 'Expense',
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: categoryColor.withOpacity(0.7),
+                    color: categoryColor.withValues(alpha: 0.7),
                   ),
                 ),
               ],

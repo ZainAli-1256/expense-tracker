@@ -4,7 +4,7 @@ import '../theme/app_theme.dart';
 /// Summary screen for Phase 2 (charts and analytics)
 /// Currently placeholder for future implementation
 class SummaryScreen extends StatelessWidget {
-  const SummaryScreen({Key? key}) : super(key: key);
+  const SummaryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

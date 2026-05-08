@@ -11,7 +11,7 @@ import 'add_transaction_screen.dart';
 
 /// Modern home screen displaying transactions and balance
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

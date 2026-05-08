@@ -111,8 +111,8 @@ class AppTheme {
         ),
       ),
 
-      // Card Theme
-      cardTheme: CardTheme(
+      // Card Theme - ✅ FIXED
+      cardTheme: CardThemeData(
         color: cardDark,
         elevation: 0,
         margin: EdgeInsets.zero,
