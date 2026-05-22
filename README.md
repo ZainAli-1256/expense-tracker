@@ -35,4 +35,5 @@ lib/
 
 ## Screenshots
 
-<img src="YOUR_IMAGE_LINK" width="250"/>
+<img width="187" height="440" alt="image" src="https://github.com/user-attachments/assets/9c5d1b06-d939-43f8-8e76-c3797cc1bac1" />
+
