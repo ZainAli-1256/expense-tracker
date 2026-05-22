@@ -22,7 +22,7 @@ A modern Flutter expense tracker app with local storage, analytics, and monthly 
 
 ## Project Structure
 
-```text
+```bash
 lib/
 ├── models/
 ├── provider/
@@ -31,9 +31,8 @@ lib/
 ├── theme/
 ├── widgets/
 └── main.dart
+```
 
-##Images
-<img width="187" height="440" alt="image" src="https://github.com/user-attachments/assets/8277bfad-cc36-4474-91ab-efbe0fa1310f" />
+## Screenshots
 
-
-
+<img src="YOUR_IMAGE_LINK" width="250"/>
