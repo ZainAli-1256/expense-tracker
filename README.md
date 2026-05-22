@@ -35,5 +35,12 @@ lib/
 
 ## Screenshots
 
-<img width="187" height="440" alt="image" src="https://github.com/user-attachments/assets/9c5d1b06-d939-43f8-8e76-c3797cc1bac1" />
+<img width="191" height="440" alt="image" src="https://github.com/user-attachments/assets/6a947d63-8395-4acb-853e-e0bcd4b3a9bb" />
 
+<img width="191" height="443" alt="image" src="https://github.com/user-attachments/assets/ef1fd401-8854-4744-9929-97bfe510f25f" />
+
+<img width="195" height="443" alt="image" src="https://github.com/user-attachments/assets/b5d3e599-8d4b-4e15-b232-e8c5919f46d8" />
+
+<img width="191" height="442" alt="image" src="https://github.com/user-attachments/assets/024cbdf2-5ee3-4368-9696-615ef62c4708" />
+
+<img width="191" height="443" alt="image" src="https://github.com/user-attachments/assets/c5fff8d0-e0f8-4df6-928a-95479799e2a0" />
